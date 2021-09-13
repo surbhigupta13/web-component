@@ -1,0 +1,26 @@
+.btn {
+    padding: 8px;
+    min-width: 100px;
+    border: 0px;
+    min-height: 24px;
+    &:disabled {
+        opacity: 0.5;
+    }
+    &:hover{
+        cursor: pointer;
+    }
+}
+.btn-neutral{
+    background-color: #586981;
+    color: #ffffff;
+}
+
+.btn-sandstone{
+    background-color: #CBA052;
+    color: #000000;
+}
+
+.btn-classic{
+    background-color: #2D6BFF;
+    color: #ffffff;
+}
