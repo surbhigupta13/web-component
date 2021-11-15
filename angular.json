@@ -63,7 +63,8 @@
               "projects/elements/src/assets"
             ],
             "styles": [
-              "projects/elements/src/styles.scss"
+              "projects/elements/src/styles.scss",
+              "./node_modules/material-design-icons/iconfont/material-icons.css"
             ],
             "scripts": [
               "node_modules/wc-ui-button/elements.js"

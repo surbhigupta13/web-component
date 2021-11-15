@@ -1,9 +1,12 @@
 .btn {
     padding: 8px;
-    min-width: 100px;
+    min-width: 150px;
     border: 0px;
     min-height: 24px;
     font-size: 12px;
+    span{
+        vertical-align: middle;
+    }
     &:disabled {
         color: #586981;
         background-color: #9FA9B7;

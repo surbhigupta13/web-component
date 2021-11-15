@@ -38,7 +38,7 @@
     "rxjs": "~6.6.0",
     "storybook-addon-web-components-knobs": "^0.3.20",
     "tslib": "^2.3.0",
-    "wc-ui-button": "^1.0.0",
+    "wc-ui-button": "1.0.6",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
