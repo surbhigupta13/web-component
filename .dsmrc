@@ -1,0 +1,7 @@
+{
+  "authToken": "9c85310226760f91efd1e2971425050f",
+  "dsmHost": "otisaccelerator.invisionapp.com",
+  "organization": "otis-elevator-company",
+  "outputDir": ".dsm",
+  "storyPath": "stories/**/*.stories.ts"
+}

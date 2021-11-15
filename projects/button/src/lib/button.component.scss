@@ -3,24 +3,110 @@
     min-width: 100px;
     border: 0px;
     min-height: 24px;
+    font-size: 12px;
     &:disabled {
-        opacity: 0.5;
+        color: #586981;
+        background-color: #9FA9B7;
+        pointer-events: none;
     }
     &:hover{
         cursor: pointer;
+        background-color: #E0E3E8;
+        border-color: #E0E3E8;
+        color: #000000;
     }
 }
 .btn-neutral{
-    background-color: #586981;
+    background-color: #3B4F6B;
     color: #ffffff;
+    &:active{
+        background-color: #586981;
+        color: #ffffff;
+    }
+    
+}
+.btn-neutral-outline {
+    background-color: transparent;
+    color: #000000;
+    border: 1px solid #3B4F6B;
 }
 
 .btn-sandstone{
     background-color: #CBA052;
     color: #000000;
+    &:active{
+        background-color: #FFD180;
+        color: #000000;
+    } 
+}
+.btn-sandstone-outline{
+    background-color: transparent;
+    color: #000000;
+    border: 1px solid #CBA052;
 }
 
 .btn-classic{
+    background-color: #0033A0;
+    color: #ffffff;
+    &:active{
+        background-color: #525CD2;
+        color: #ffffff;
+    }  
+}
+.btn-classic-outline{
+    background-color: transparent;
+    color: #000000;
+    border: 1px solid #0033A0;
+}
+.btn-sunrise{
+    background-color: #F65275;
+    color: #000000;
+    &:active{
+        background-color: #FF86A3;
+        color: #000000;
+    }  
+}
+.btn-sunrise-outline{
+    background-color: transparent;
+    color: #000000;
+    border: 1px solid #F65275;
+}
+.btn-carbon{
+    background-color: #3B4F6B;
+    color: #ffffff;
+    &:active{
+        background-color: #586981;
+        color: #ffffff;
+    } 
+}
+.btn-carbon-outline{
+    background-color: transparent;
+    color: #000000;
+    border: 1px solid #3B4F6B;
+}
+.btn-azul{
     background-color: #2D6BFF;
     color: #ffffff;
+    &:active{
+        background-color: #7799FF;
+        color: #000000;
+    }  
+}
+.btn-azul-outline{
+    background-color: transparent;
+    color: #000000;
+    border: 1px solid #2D6BFF;
+}
+.btn-warmgray{
+    background-color: #9E978E;
+    color: #000000;
+    &:active{
+        background-color: #CFC8BE;
+        color: #000000;
+    } 
+}
+.btn-warmgray-outline{
+    background-color: transparent;
+    color: #000000;
+    border: 1px solid #9E978E;
 }

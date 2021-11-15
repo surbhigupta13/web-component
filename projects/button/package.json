@@ -1,6 +1,12 @@
 {
   "name": "button",
   "version": "0.0.1",
+  "author": "Surbhi Gupta",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/surbhigupta13/web-component.git"
+  },
+  "homepage": "https://github.com/surbhigupta13/web-component",
   "peerDependencies": {
     "@angular/common": "^12.2.0",
     "@angular/core": "^12.2.0"

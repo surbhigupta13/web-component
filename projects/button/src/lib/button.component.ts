@@ -3,18 +3,17 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 @Component({
   selector: 'ui-button',
   template: `
-  <button [disabled]="disabled" 
+  <button [disabled]="disabled"
   (click)="onClick.emit($event)"
   [class] = "'btn' + ' ' + 'btn-'+buttonType"
   >
-    {{text}}
+    <span>{{text}}</span>
   </button>`,
   styleUrls: ['button.component.scss'],
 })
 export class ButtonComponent implements OnInit {
   @Input() text!: string;
   @Input() disabled!: boolean;
-  // @Input() backgroundColor?: string;
   @Output() onClick = new EventEmitter<Event>();
   @Input() buttonType = 'neutral';
   constructor() { }
@@ -22,4 +21,3 @@ export class ButtonComponent implements OnInit {
   }
 
 }
-// [ngStyle]="{ 'background-color': backgroundColor }"

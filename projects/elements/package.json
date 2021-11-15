@@ -1,13 +1,17 @@
 {
-  "name": "ui-button",
-  "version": "1.0.0",
+  "name": "wc-ui-button",
+  "version": "1.0.2",
   "description": "",
   "main": "karma.conf.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/surbhigupta13/web-component.git"
+  },
+  "homepage": "https://github.com/surbhigupta13/web-component",
+  "author": "Surbhi Gupta",
   "license": "ISC",
   "files": ["elements.js", "styles.css"]
 }

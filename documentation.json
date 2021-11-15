@@ -31,7 +31,7 @@
     "components": [
         {
             "name": "ButtonComponent",
-            "id": "component-ButtonComponent-4b69365dfb1c54033a011de9e7da9d37",
+            "id": "component-ButtonComponent-acfdeeb3835feb06f50cb2f804cad185",
             "file": "projects/button/src/lib/button.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -43,7 +43,7 @@
                 "button.component.scss"
             ],
             "styles": [],
-            "template": "<button [disabled]=\"disabled\"\n(click)=\"onClick.emit($event)\"\n[class] = \"'btn' + ' ' + 'btn-'+buttonType\"\n>\n  {{text}}\n</button>",
+            "template": "<button [disabled]=\"disabled\"\n(click)=\"onClick.emit($event)\"\n[class] = \"'btn' + ' ' + 'btn-'+buttonType\"\n>\n  <span>{{text}}</span>\n</button>",
             "templateUrl": [],
             "viewProviders": [],
             "inputsClass": [
@@ -52,7 +52,7 @@
                     "defaultValue": "'neutral'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 19,
+                    "line": 18,
                     "type": "string"
                 },
                 {
@@ -76,7 +76,7 @@
                     "defaultValue": "new EventEmitter<Event>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 18,
+                    "line": 17,
                     "type": "EventEmitter"
                 }
             ],
@@ -88,7 +88,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 21,
+                    "line": 20,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -100,11 +100,11 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';\n\n@Component({\n  selector: 'ui-button',\n  template: `\n  <button [disabled]=\"disabled\" \n  (click)=\"onClick.emit($event)\"\n  [class] = \"'btn' + ' ' + 'btn-'+buttonType\"\n  >\n    {{text}}\n  </button>`,\n  styleUrls: ['button.component.scss'],\n})\nexport class ButtonComponent implements OnInit {\n  @Input() text!: string;\n  @Input() disabled!: boolean;\n  // @Input() backgroundColor?: string;\n  @Output() onClick = new EventEmitter<Event>();\n  @Input() buttonType = 'neutral';\n  constructor() { }\n  ngOnInit(): void {\n  }\n\n}\n// [ngStyle]=\"{ 'background-color': backgroundColor }\"",
+            "sourceCode": "import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';\n\n@Component({\n  selector: 'ui-button',\n  template: `\n  <button [disabled]=\"disabled\"\n  (click)=\"onClick.emit($event)\"\n  [class] = \"'btn' + ' ' + 'btn-'+buttonType\"\n  >\n    <span>{{text}}</span>\n  </button>`,\n  styleUrls: ['button.component.scss'],\n})\nexport class ButtonComponent implements OnInit {\n  @Input() text!: string;\n  @Input() disabled!: boolean;\n  @Output() onClick = new EventEmitter<Event>();\n  @Input() buttonType = 'neutral';\n  constructor() { }\n  ngOnInit(): void {\n  }\n\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".btn {\n    padding: 8px;\n    min-width: 100px;\n    border: 0px;\n    min-height: 24px;\n    &:disabled {\n        opacity: 0.5;\n    }\n}\n.btn-neutral{\n    background-color: #586981;\n    color: #ffffff;\n}\n\n.btn-sandstone{\n    background-color: #CBA052;\n    color: #000000;\n}\n\n.btn-classic{\n    background-color: #2D6BFF;\n    color: #ffffff;\n}\n",
+                    "data": ".btn {\n    padding: 8px;\n    min-width: 100px;\n    border: 0px;\n    min-height: 24px;\n    font-size: 12px;\n    &:disabled {\n        opacity: 0.5;\n        // background-color: #9FA9B7;\n        // color: #586981;\n        cursor: none;\n    }\n    &:hover{\n        cursor: pointer;\n        background-color: #E0E3E8;\n        color: #000000;\n    }\n}\n.btn-neutral{\n    background-color: #3B4F6B;\n    color: #ffffff;\n    &:active{\n        background-color: #586981;\n        color: #ffffff;\n    }\n    \n}\n.btn-neutral-outline {\n    background-color: transparent;\n    color: #000000;\n    border: 1px solid #3B4F6B;\n}\n\n.btn-sandstone{\n    background-color: #CBA052;\n    color: #000000;\n    &:active{\n        background-color: #FFD180;\n        color: #000000;\n    } \n}\n.btn-sandstone-outline{\n    background-color: transparent;\n    color: #000000;\n    border: 1px solid #CBA052;\n}\n\n.btn-classic{\n    background-color: #0033A0;\n    color: #ffffff;\n    &:active{\n        background-color: #525CD2;\n        color: #ffffff;\n    }  \n}\n.btn-classic-outline{\n    background-color: transparent;\n    color: #000000;\n    border: 1px solid #0033A0;\n}\n.btn-sunrise{\n    background-color: #F65275;\n    color: #000000;\n    &:active{\n        background-color: #FF86A3;\n        color: #000000;\n    }  \n}\n.btn-sunrise-outline{\n    background-color: transparent;\n    color: #000000;\n    border: 1px solid #F65275;\n}\n.btn-carbon{\n    background-color: #3B4F6B;\n    color: #ffffff;\n    &:active{\n        background-color: #586981;\n        color: #ffffff;\n    } \n}\n.btn-carbon-outline{\n    background-color: transparent;\n    color: #000000;\n    border: 1px solid #3B4F6B;\n}\n.btn-azul{\n    background-color: #2D6BFF;\n    color: #ffffff;\n    &:active{\n        background-color: #7799FF;\n        color: #000000;\n    }  \n}\n.btn-azul-outline{\n    background-color: transparent;\n    color: #000000;\n    border: 1px solid #2D6BFF;\n}\n.btn-warmgray{\n    background-color: #9E978E;\n    color: #000000;\n    &:active{\n        background-color: #CFC8BE;\n        color: #000000;\n    } \n}\n.btn-warmgray-outline{\n    background-color: transparent;\n    color: #000000;\n    border: 1px solid #9E978E;\n}\n",
                     "styleUrl": "button.component.scss"
                 }
             ],
@@ -115,7 +115,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "args": [],
-                "line": 19
+                "line": 18
             },
             "implements": [
                 "OnInit"
@@ -176,13 +176,13 @@
         },
         {
             "name": "ButtonModule",
-            "id": "module-ButtonModule-854ab50bc824764f27bdc018a53fd3d7",
+            "id": "module-ButtonModule-d3bb2840123eba88763d1106c2e7a707",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "projects/button/src/lib/button.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\nimport { BrowserModule } from '@angular/platform-browser'\nimport { ButtonComponent } from './button.component';\n\n\n@NgModule({\n  declarations: [\n    ButtonComponent\n  ],\n  imports: [\n    BrowserModule\n  ],\n  exports: [\n    ButtonComponent\n  ]\n})\nexport class ButtonModule {}\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { BrowserModule } from '@angular/platform-browser'\nimport { ButtonComponent } from './button.component';\nimport { MatIconModule } from '@angular/material/icon';\n\n@NgModule({\n  declarations: [\n    ButtonComponent\n  ],\n  imports: [\n    BrowserModule,\n    MatIconModule\n  ],\n  exports: [\n    ButtonComponent\n  ]\n})\nexport class ButtonModule {}\n",
             "children": [
                 {
                     "type": "providers",
@@ -221,16 +221,6 @@
     ],
     "miscellaneous": {
         "variables": [
-            {
-                "name": "BasicButton",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "stories/index.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "",
-                "defaultValue": "Template.bind({})"
-            },
             {
                 "name": "context",
                 "ctype": "miscellaneous",
@@ -272,6 +262,16 @@
                 "defaultValue": "{\n  production: false\n}"
             },
             {
+                "name": "neutralButton",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "stories/Button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "() => ({\n  template:  `\n    <ui-button \n      [text]=\"text\" \n      [buttonType]=\"buttonType\" \n      (onClick)=\"onClick($event)\" \n      [disabled]= \"disabled\"></ui-button>`,\n  props: {\n    disabled : boolean('disabled', false),\n    text : text('text', 'BUTTON'),\n    buttonType :  select(\n    \"Button type\",\n    [\"neutral\", \"neutral-outline\",  \n      \"sandstone\", \"sandstone-outline\", \n      \"classic\", \"classic-outline\" , \n      \"sunrise\", \"sunrise-outline\",\n      \"carbon\", \"carbon-outline\",\n      \"azul\", \"azul-outline\",\n      \"warmgray\", \"warmgray-outline\"],\n    \"neutral\"),\n    onClick: () => action('Button clicked')('Click')\n  }\n})"
+            },
+            {
                 "name": "require",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -288,44 +288,12 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "literal type"
-            },
-            {
-                "name": "Template",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "stories/index.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story<ButtonComponent>",
-                "defaultValue": "(args: ButtonComponent) => ({\n  component: ButtonComponent,\n  props: args,\n})"
             }
         ],
         "functions": [],
         "typealiases": [],
         "enumerations": [],
         "groupedVariables": {
-            "stories/index.stories.ts": [
-                {
-                    "name": "BasicButton",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "stories/index.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "Template.bind({})"
-                },
-                {
-                    "name": "Template",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "stories/index.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story<ButtonComponent>",
-                    "defaultValue": "(args: ButtonComponent) => ({\n  component: ButtonComponent,\n  props: args,\n})"
-                }
-            ],
             "projects/button/src/test.ts": [
                 {
                     "name": "context",
@@ -390,6 +358,18 @@
                     "deprecationMessage": "",
                     "type": "object",
                     "defaultValue": "{\n  production: false\n}"
+                }
+            ],
+            "stories/Button.stories.ts": [
+                {
+                    "name": "neutralButton",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "stories/Button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "() => ({\n  template:  `\n    <ui-button \n      [text]=\"text\" \n      [buttonType]=\"buttonType\" \n      (onClick)=\"onClick($event)\" \n      [disabled]= \"disabled\"></ui-button>`,\n  props: {\n    disabled : boolean('disabled', false),\n    text : text('text', 'BUTTON'),\n    buttonType :  select(\n    \"Button type\",\n    [\"neutral\", \"neutral-outline\",  \n      \"sandstone\", \"sandstone-outline\", \n      \"classic\", \"classic-outline\" , \n      \"sunrise\", \"sunrise-outline\",\n      \"carbon\", \"carbon-outline\",\n      \"azul\", \"azul-outline\",\n      \"warmgray\", \"warmgray-outline\"],\n    \"neutral\"),\n    onClick: () => action('Button clicked')('Click')\n  }\n})"
                 }
             ]
         },
@@ -481,21 +461,11 @@
                 "status": "low"
             },
             {
-                "filePath": "stories/index.stories.ts",
+                "filePath": "stories/Button.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
-                "name": "BasicButton",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "stories/index.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Template",
+                "name": "neutralButton",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"

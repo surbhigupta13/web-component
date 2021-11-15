@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Injector } from '@angular/core';
 import { createCustomElement } from '@angular/elements';
-import { ButtonModule, ButtonComponent } from 'button';
+import { ButtonModule, ButtonComponent, IconComponent } from 'button';
 
 @NgModule({
   imports: [
@@ -17,6 +17,8 @@ export class AppModule {
   ngDoBootstrap(){
     const element = createCustomElement(ButtonComponent, { injector: this.injector })
     customElements.define("ui-button", element);
+    const icon = createCustomElement(IconComponent, { injector: this.injector })
+    customElements.define("ui-icon", icon);
   }
 
  }

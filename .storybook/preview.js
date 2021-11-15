@@ -1,5 +1,8 @@
 import { setCompodocJson } from "@storybook/addon-docs/angular";
 import docJson from "../documentation.json";
+import { withDsm } from '@invisionapp/dsm-storybook';
+
+export const decorators = [withDsm];
 setCompodocJson(docJson);
 
 export const parameters = {

@@ -1,17 +1,19 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser'
 import { ButtonComponent } from './button.component';
-
+import { IconComponent } from './icons/icon.component';
 
 @NgModule({
   declarations: [
-    ButtonComponent
+    ButtonComponent,
+    IconComponent
   ],
   imports: [
     BrowserModule
   ],
   exports: [
-    ButtonComponent
+    ButtonComponent,
+    IconComponent
   ]
 })
 export class ButtonModule {}
