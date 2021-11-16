@@ -7,6 +7,10 @@
     span{
         vertical-align: middle;
     }
+    .o-icon{
+        display: inline-block;
+        width: 24px;
+    }
     &:disabled {
         color: #586981;
         background-color: #9FA9B7;

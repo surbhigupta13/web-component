@@ -3,7 +3,7 @@ import { Component, OnInit, Input, EventEmitter, Sanitizer } from '@angular/core
 @Component({
   selector: 'ui-icon',
   template: `
-    <span [class] = "'material-icons' + ' ' + 'o-'+size">{{icon}} {{size}}</span>
+    <span [class] = "'material-icons' + ' ' + 'o-'+size">{{icon}}</span>
   `,
   styleUrls: ['icon.component.scss'],
 })

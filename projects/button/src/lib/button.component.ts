@@ -6,8 +6,8 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
   (click)="onClick.emit($event)"
   [class] = "'btn' + ' ' + 'btn-'+buttonType"
   >
-    <span *ngIf="iconName">
-      <ui-icon [attr.icon]="iconName" [attr.size]= "iconSize"></ui-icon>
+    <span *ngIf="iconName" class="o-icon">
+      <ui-icon [icon]="iconName" [size]= "iconSize"></ui-icon>
     </span>
     <span *ngIf="text">{{text}}</span>
   </button>`,

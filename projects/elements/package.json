@@ -1,6 +1,6 @@
 {
   "name": "wc-ui-button",
-  "version": "1.0.6",
+  "version": "1.0.10",
   "description": "",
   "main": "karma.conf.js",
   "scripts": {
@@ -13,5 +13,6 @@
   "homepage": "https://github.com/surbhigupta13/web-component",
   "author": "Surbhi Gupta",
   "license": "ISC",
-  "files": ["elements.js", "styles.css"]
+  "files": ["elements.js", "styles.css", "MaterialIcons-Regular.eot", "MaterialIcons-Regular.ttf",
+    "MaterialIcons-Regular.woff", "MaterialIcons-Regular.woff2"]
 }
