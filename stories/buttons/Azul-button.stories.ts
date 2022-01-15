@@ -7,7 +7,7 @@ import { IconComponent } from '../../projects/button/src/lib/icons/icon.componen
 // @ts-ignore
 import buttonDocs from './button.mdx';
 export default {
-  title: 'Azul Button',
+  title: 'Simple Buttons/Azul Button',
   component: ButtonComponent,
   decorators: [
     withKnobs,
@@ -19,36 +19,26 @@ export default {
     'in-dsm': { id: '5fc6b43d3c368c3914419567' }
   }
 }
-
-
-export const azulButton = () => ({
+export const azulButton = (args: any) => ({
   template:  `
     <ui-button 
       [text]="text" 
-      [buttonType]="buttonType" 
+      [buttontype]="buttontype" 
       (onClick)="onClick($event)" 
-      [disabled]= "disabled"
-      [iconName] = "iconName"
-      [iconSize] = "iconSize"></ui-button>`,
+      [disabled]="disabled"></ui-button>`,
   props: {
+    text: 'Button',
     disabled : boolean('disabled', false),
-    text : text('text', 'BUTTON'),
-    iconName: text('Icon Name', 'edit'),
-    iconSize: select(
-      "Icon Size", 
-      [16, 18, 24, 36, 48], 16),
-    buttonType :  select(
-    "Button type",
-    ["neutral", "neutral-outline",  
-      "sandstone", "sandstone-outline", 
-      "classic", "classic-outline" , 
-      "sunrise", "sunrise-outline",
-      "carbon", "carbon-outline",
-      "azul", "azul-outline",
-      "warmgray", "warmgray-outline"],
-    "azul"),
+    buttontype :  select(
+      "Button type",
+      ["neutral", "neutral-outline",  
+        "sandstone", "sandstone-outline", 
+        "classic", "classic-outline" , 
+        "sunrise", "sunrise-outline",
+        "carbon", "carbon-outline",
+        "azul", "azul-outline",
+        "warmgray", "warmgray-outline"],
+      "azul"),
     onClick: () => action('Button clicked')('Click'),
-  }
+    }
 });
-
-

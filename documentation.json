@@ -3,6 +3,27 @@
     "interfaces": [],
     "injectables": [
         {
+            "name": "AlertBarService",
+            "id": "injectable-AlertBarService-ea96c50e9fac83cc0e7a74c3c68060c6",
+            "file": "projects/alert-bar/src/lib/alert-bar.service.ts",
+            "properties": [],
+            "methods": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { Injectable } from '@angular/core';\n\n@Injectable({\n  providedIn: 'root'\n})\nexport class AlertBarService {\n\n  constructor() { }\n}\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 6
+            },
+            "type": "injectable"
+        },
+        {
             "name": "ButtonService",
             "id": "injectable-ButtonService-39a0fc33cb8f2a668c5bcc6907896f4a",
             "file": "projects/button/src/lib/button.service.ts",
@@ -30,8 +51,61 @@
     "directives": [],
     "components": [
         {
+            "name": "AlertBarComponent",
+            "id": "component-AlertBarComponent-195790130b0b89531009f8ee8c518812",
+            "file": "projects/alert-bar/src/lib/alert-bar.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "ui-alert-bar",
+            "styleUrls": [],
+            "styles": [],
+            "template": "<p>\n  alert-bar works!\n</p>\n",
+            "templateUrl": [],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 17,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'ui-alert-bar',\n  template: `\n    <p>\n      alert-bar works!\n    </p>\n  `,\n  styles: [\n  ]\n})\nexport class AlertBarComponent implements OnInit {\n\n  constructor() { }\n\n  ngOnInit(): void {\n  }\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 13
+            },
+            "implements": [
+                "OnInit"
+            ]
+        },
+        {
             "name": "ButtonComponent",
-            "id": "component-ButtonComponent-a9009f1e8bab6d22d37676f37009f92a",
+            "id": "component-ButtonComponent-0897363a8d1731b823c4eed1d755efb8",
             "file": "projects/button/src/lib/button.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -43,12 +117,12 @@
                 "button.component.scss"
             ],
             "styles": [],
-            "template": "<button [disabled]=\"disabled\"\n(click)=\"onClick.emit($event)\"\n[class] = \"'btn' + ' ' + 'btn-'+buttonType\"\n>\n  <span *ngIf=\"iconName\" class=\"o-icon\">\n    <ui-icon [icon]=\"iconName\" [size]= \"iconSize\"></ui-icon>\n  </span>\n  <span *ngIf=\"text\">{{text}}</span>\n</button>",
+            "template": "<button [disabled]=\"disabled\"\n(click)=\"onClick.emit($event)\"\n[class] = \"'btn' + ' ' + 'btn-'+buttontype + ' ' + 'icon-'+iconplacement\"\n>\n  <span *ngIf=\"iconname\" class=\"o-icon\">\n    <ui-icon [icon]=\"iconname\" [size]= \"iconsize\"></ui-icon>\n  </span>\n  <span *ngIf=\"text\">{{text}}</span>\n</button>",
             "templateUrl": [],
             "viewProviders": [],
             "inputsClass": [
                 {
-                    "name": "buttonType",
+                    "name": "buttontype",
                     "defaultValue": "'neutral'",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -63,14 +137,21 @@
                     "type": "boolean"
                 },
                 {
-                    "name": "iconName",
+                    "name": "iconname",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 21,
                     "type": "string"
                 },
                 {
-                    "name": "iconSize",
+                    "name": "iconplacement",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 23,
+                    "type": "string"
+                },
+                {
+                    "name": "iconsize",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 22,
@@ -102,7 +183,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 24,
+                    "line": 25,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -114,11 +195,11 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';\n@Component({\n  selector: 'ui-button',\n  template: `\n  <button [disabled]=\"disabled\"\n  (click)=\"onClick.emit($event)\"\n  [class] = \"'btn' + ' ' + 'btn-'+buttonType\"\n  >\n    <span *ngIf=\"iconName\" class=\"o-icon\">\n      <ui-icon [icon]=\"iconName\" [size]= \"iconSize\"></ui-icon>\n    </span>\n    <span *ngIf=\"text\">{{text}}</span>\n  </button>`,\n  styleUrls: ['button.component.scss'],\n})\nexport class ButtonComponent implements OnInit {\n  @Input() text!: string;\n  @Input() disabled!: boolean;\n  @Output() onClick = new EventEmitter<Event>();\n  @Input() buttonType = 'neutral';\n  @Input() iconName!: string;\n  @Input() iconSize!: number;\n  constructor() { }\n  ngOnInit(): void {\n  }\n\n}\n",
+            "sourceCode": "import { Component, Input, OnInit, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';\n@Component({\n  selector: 'ui-button',\n  template: `\n  <button [disabled]=\"disabled\"\n  (click)=\"onClick.emit($event)\"\n  [class] = \"'btn' + ' ' + 'btn-'+buttontype + ' ' + 'icon-'+iconplacement\"\n  >\n    <span *ngIf=\"iconname\" class=\"o-icon\">\n      <ui-icon [icon]=\"iconname\" [size]= \"iconsize\"></ui-icon>\n    </span>\n    <span *ngIf=\"text\">{{text}}</span>\n  </button>`,\n  styleUrls: ['button.component.scss']\n})\nexport class ButtonComponent implements OnInit {\n  @Input() text!: string;\n  @Input() disabled!: boolean;\n  @Output() onClick = new EventEmitter<Event>();\n  @Input() buttontype = 'neutral';\n  @Input() iconname!: string;\n  @Input() iconsize!: number;\n  @Input() iconplacement!: string;\n  constructor() { }\n  ngOnInit(): void {\n  }\n\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".btn {\n    padding: 8px;\n    min-width: 150px;\n    border: 0px;\n    min-height: 24px;\n    font-size: 12px;\n    span{\n        vertical-align: middle;\n    }\n    .o-icon{\n        display: inline-block;\n        width: 24px;\n    }\n    &:disabled {\n        color: #586981;\n        background-color: #9FA9B7;\n        pointer-events: none;\n    }\n    &:hover{\n        cursor: pointer;\n        background-color: #E0E3E8;\n        border-color: #E0E3E8;\n        color: #000000;\n    }\n}\n.btn-neutral{\n    background-color: #3B4F6B;\n    color: #ffffff;\n    &:active{\n        background-color: #586981;\n        color: #ffffff;\n    }\n    \n}\n.btn-neutral-outline {\n    background-color: transparent;\n    color: #000000;\n    border: 1px solid #3B4F6B;\n}\n\n.btn-sandstone{\n    background-color: #CBA052;\n    color: #000000;\n    &:active{\n        background-color: #FFD180;\n        color: #000000;\n    } \n}\n.btn-sandstone-outline{\n    background-color: transparent;\n    color: #000000;\n    border: 1px solid #CBA052;\n}\n\n.btn-classic{\n    background-color: #0033A0;\n    color: #ffffff;\n    &:active{\n        background-color: #525CD2;\n        color: #ffffff;\n    }  \n}\n.btn-classic-outline{\n    background-color: transparent;\n    color: #000000;\n    border: 1px solid #0033A0;\n}\n.btn-sunrise{\n    background-color: #F65275;\n    color: #000000;\n    &:active{\n        background-color: #FF86A3;\n        color: #000000;\n    }  \n}\n.btn-sunrise-outline{\n    background-color: transparent;\n    color: #000000;\n    border: 1px solid #F65275;\n}\n.btn-carbon{\n    background-color: #3B4F6B;\n    color: #ffffff;\n    &:active{\n        background-color: #586981;\n        color: #ffffff;\n    } \n}\n.btn-carbon-outline{\n    background-color: transparent;\n    color: #000000;\n    border: 1px solid #3B4F6B;\n}\n.btn-azul{\n    background-color: #2D6BFF;\n    color: #ffffff;\n    &:active{\n        background-color: #7799FF;\n        color: #000000;\n    }  \n}\n.btn-azul-outline{\n    background-color: transparent;\n    color: #000000;\n    border: 1px solid #2D6BFF;\n}\n.btn-warmgray{\n    background-color: #9E978E;\n    color: #000000;\n    &:active{\n        background-color: #CFC8BE;\n        color: #000000;\n    } \n}\n.btn-warmgray-outline{\n    background-color: transparent;\n    color: #000000;\n    border: 1px solid #9E978E;\n}\n",
+                    "data": ".btn {\n    padding: 8px;\n    min-width: 40px;\n    border: 0px;\n    min-height: 24px;\n    font-size: 12px;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    column-gap: 8px;\n    &.icon-right{\n        flex-direction: row-reverse;\n    }\n    &.icon-left{\n        flex-direction: row;\n    }\n    .o-icon{\n        display: inline-block;\n    }\n    &:disabled {\n        color: #586981;\n        background-color: #9FA9B7;\n        pointer-events: none;\n    }\n    &:hover{\n        cursor: pointer;\n        background-color: #E0E3E8;\n        border-color: #E0E3E8;\n        color: #000000;\n    }\n}\n.btn-neutral{\n    background-color: #3B4F6B;\n    color: #ffffff;\n    &:active{\n        background-color: #586981;\n        color: #ffffff;\n    }\n    \n}\n.btn-neutral-outline {\n    background-color: transparent;\n    color: #000000;\n    border: 1px solid #3B4F6B;\n}\n\n.btn-sandstone{\n    background-color: #CBA052;\n    color: #000000;\n    &:active{\n        background-color: #FFD180;\n        color: #000000;\n    } \n}\n.btn-sandstone-outline{\n    background-color: transparent;\n    color: #000000;\n    border: 1px solid #CBA052;\n}\n\n.btn-classic{\n    background-color: #0033A0;\n    color: #ffffff;\n    &:active{\n        background-color: #525CD2;\n        color: #ffffff;\n    }  \n}\n.btn-classic-outline{\n    background-color: transparent;\n    color: #000000;\n    border: 1px solid #0033A0;\n}\n.btn-sunrise{\n    background-color: #F65275;\n    color: #000000;\n    &:active{\n        background-color: #FF86A3;\n        color: #000000;\n    }  \n}\n.btn-sunrise-outline{\n    background-color: transparent;\n    color: #000000;\n    border: 1px solid #F65275;\n}\n.btn-carbon{\n    background-color: #3B4F6B;\n    color: #ffffff;\n    &:active{\n        background-color: #586981;\n        color: #ffffff;\n    } \n}\n.btn-carbon-outline{\n    background-color: transparent;\n    color: #000000;\n    border: 1px solid #3B4F6B;\n}\n.btn-azul{\n    background-color: #2D6BFF;\n    color: #ffffff;\n    &:active{\n        background-color: #7799FF;\n        color: #000000;\n    }  \n}\n.btn-azul-outline{\n    background-color: transparent;\n    color: #000000;\n    border: 1px solid #2D6BFF;\n}\n.btn-warmgray{\n    background-color: #9E978E;\n    color: #000000;\n    &:active{\n        background-color: #CFC8BE;\n        color: #000000;\n    } \n}\n.btn-warmgray-outline{\n    background-color: transparent;\n    color: #000000;\n    border: 1px solid #9E978E;\n}\n",
                     "styleUrl": "button.component.scss"
                 }
             ],
@@ -129,7 +210,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "args": [],
-                "line": 22
+                "line": 23
             },
             "implements": [
                 "OnInit"
@@ -137,7 +218,7 @@
         },
         {
             "name": "IconComponent",
-            "id": "component-IconComponent-27f18ab788f030cba884a29805243b86",
+            "id": "component-IconComponent-662c4a1d2057d5f3251187b48865838f",
             "file": "projects/button/src/lib/icons/icon.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -189,7 +270,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, OnInit, Input, EventEmitter, Sanitizer } from '@angular/core';\n\n@Component({\n  selector: 'ui-icon',\n  template: `\n    <span [class] = \"'material-icons' + ' ' + 'o-'+size\">{{icon}}</span>\n  `,\n  styleUrls: ['icon.component.scss'],\n})\nexport class IconComponent implements OnInit {\n  @Input() icon!: string;\n  @Input() size!: number;\n  constructor() { }\n\n  ngOnInit(): void {\n  }\n\n}\n\n",
+            "sourceCode": "import { Component, OnInit, Input, EventEmitter, Sanitizer, ChangeDetectionStrategy } from '@angular/core';\n\n@Component({\n  selector: 'ui-icon',\n  template: `\n    <span [class] = \"'material-icons' + ' ' + 'o-'+size\">{{icon}}</span>\n  `,\n  styleUrls: ['icon.component.scss']\n})\nexport class IconComponent implements OnInit {\n  @Input() icon! : string;\n  @Input() size! : number;\n  constructor() { }\n\n  ngOnInit(): void {\n  }\n\n}\n\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -213,8 +294,52 @@
     ],
     "modules": [
         {
+            "name": "AlertBarModule",
+            "id": "module-AlertBarModule-329b6c71166cb183caf7953172c58850",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "projects/alert-bar/src/lib/alert-bar.module.ts",
+            "methods": [],
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { AlertBarComponent } from './alert-bar.component';\n\n\n\n@NgModule({\n  declarations: [\n    AlertBarComponent\n  ],\n  imports: [\n  ],\n  exports: [\n    AlertBarComponent\n  ]\n})\nexport class AlertBarModule { }\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "AlertBarComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "AlertBarComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
             "name": "AppModule",
-            "id": "module-AppModule-ca5bd1c32cac059cd4e30d426a7f257f",
+            "id": "module-AppModule-4b9c7bc14a3389ce09fabcfd56d58399",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
@@ -226,12 +351,12 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 16,
+                    "line": 18,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
             ],
-            "sourceCode": "import { BrowserModule } from '@angular/platform-browser';\nimport { NgModule, Injector } from '@angular/core';\nimport { createCustomElement } from '@angular/elements';\nimport { ButtonModule, ButtonComponent, IconComponent } from 'button';\n@NgModule({\n  imports: [\n    BrowserModule,\n    ButtonModule\n  ],\n  providers: []\n})\nexport class AppModule {\n\n  constructor(private injector: Injector){}\n\n  ngDoBootstrap(){\n    const element = createCustomElement(ButtonComponent, { injector: this.injector })\n    customElements.define(\"ui-button\", element);\n    const icon = createCustomElement(IconComponent, { injector: this.injector })\n    customElements.define(\"ui-icon\", icon);\n  }\n\n }",
+            "sourceCode": "import { BrowserModule } from '@angular/platform-browser';\nimport { NgModule, Injector } from '@angular/core';\nimport { createCustomElement } from '@angular/elements';\nimport { ButtonModule, ButtonComponent } from 'button';\nimport { AlertBarModule, AlertBarComponent} from 'alert-bar';\n@NgModule({\n  imports: [\n    BrowserModule,\n    ButtonModule,\n    AlertBarModule\n  ],\n  providers: []\n})\nexport class AppModule {\n\n  constructor(private injector: Injector){}\n\n  ngDoBootstrap(){\n    const button = createCustomElement(ButtonComponent, { injector: this.injector })\n    customElements.define(\"ui-button\", button);\n    const alertBar = createCustomElement(AlertBarComponent, { injector: this.injector })\n    customElements.define(\"ui-alert-bar\", alertBar);\n  }\n\n }",
             "children": [
                 {
                     "type": "providers",
@@ -244,6 +369,9 @@
                 {
                     "type": "imports",
                     "elements": [
+                        {
+                            "name": "AlertBarModule"
+                        },
                         {
                             "name": "ButtonModule"
                         }
@@ -324,7 +452,27 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
-                "defaultValue": "() => ({\n  template:  `\n    <ui-button \n      [text]=\"text\" \n      [buttonType]=\"buttonType\" \n      (onClick)=\"onClick($event)\" \n      [disabled]= \"disabled\"\n      [iconName] = \"iconName\"\n      [iconSize] = \"iconSize\"></ui-button>`,\n  props: {\n    disabled : boolean('disabled', false),\n    text : text('text', 'BUTTON'),\n    iconName: text('Icon Name', 'edit'),\n    iconSize: select(\n      \"Icon Size\", \n      [16, 18, 24, 36, 48], 16),\n    buttonType :  select(\n    \"Button type\",\n    [\"neutral\", \"neutral-outline\",  \n      \"sandstone\", \"sandstone-outline\", \n      \"classic\", \"classic-outline\" , \n      \"sunrise\", \"sunrise-outline\",\n      \"carbon\", \"carbon-outline\",\n      \"azul\", \"azul-outline\",\n      \"warmgray\", \"warmgray-outline\"],\n    \"azul\"),\n    onClick: () => action('Button clicked')('Click'),\n  }\n})"
+                "defaultValue": "(args: any) => ({\n  template:  `\n    <ui-button \n      [text]=\"text\" \n      [buttontype]=\"buttontype\" \n      (onClick)=\"onClick($event)\" \n      [disabled]=\"disabled\"></ui-button>`,\n  props: {\n    text: 'Button',\n    disabled : boolean('disabled', false),\n    buttontype :  select(\n      \"Button type\",\n      [\"neutral\", \"neutral-outline\",  \n        \"sandstone\", \"sandstone-outline\", \n        \"classic\", \"classic-outline\" , \n        \"sunrise\", \"sunrise-outline\",\n        \"carbon\", \"carbon-outline\",\n        \"azul\", \"azul-outline\",\n        \"warmgray\", \"warmgray-outline\"],\n      \"azul\"),\n    onClick: () => action('Button clicked')('Click'),\n    }\n})"
+            },
+            {
+                "name": "azulIconButton",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "stories/icon-buttons/Azul-icon-button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "(args: any) => ({\n  template:  `\n    <ui-button \n      [buttontype]=\"buttontype\" \n      (onClick)=\"onClick($event)\" \n      [disabled]=\"disabled\"\n      [iconname]=\"iconname\"\n      [iconsize]=\"iconsize\"\n      ></ui-button>`,\n  props: {\n    disabled : boolean('disabled', false),\n    iconname: 'edit',\n    iconsize: '16',\n    buttontype :  select(\n      \"Button type\",\n      [\"neutral\", \"neutral-outline\",  \n        \"sandstone\", \"sandstone-outline\", \n        \"classic\", \"classic-outline\" , \n        \"sunrise\", \"sunrise-outline\",\n        \"carbon\", \"carbon-outline\",\n        \"azul\", \"azul-outline\",\n        \"warmgray\", \"warmgray-outline\"],\n      \"azul\"),\n  onClick: () => action('Button clicked')('Click'),\n  }\n})"
+            },
+            {
+                "name": "azulTextIconButton",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "stories/text-icon-buttons/Azul-text-icon-button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "(args: any) => ({\n  template:  `\n    <ui-button \n      [text]=\"text\" \n      [buttontype]=\"buttontype\" \n      (onClick)=\"onClick($event)\" \n      [disabled]=\"disabled\"\n      [iconname]=\"iconname\"\n      [iconsize]=\"iconsize\"\n      [iconplacement]=\"iconplacement\"\n      ></ui-button>`,\n  props: {\n    text: 'Button',\n    disabled : boolean('disabled', false),\n    iconname: 'edit',\n    iconsize: '16',\n    iconplacement: select(\n      \"Align Icon\", \n      [\"left\", \"right\"], \"left\"),\n    buttontype :  select(\n      \"Button type\",\n      [\"neutral\", \"neutral-outline\",  \n        \"sandstone\", \"sandstone-outline\", \n        \"classic\", \"classic-outline\" , \n        \"sunrise\", \"sunrise-outline\",\n        \"carbon\", \"carbon-outline\",\n        \"azul\", \"azul-outline\",\n        \"warmgray\", \"warmgray-outline\"],\n      \"azul\"),\n  onClick: () => action('Button clicked')('Click'),\n  }\n})"
             },
             {
                 "name": "classicButton",
@@ -334,7 +482,37 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
-                "defaultValue": "() => ({\n  template:  `\n    <ui-button \n      [text]=\"text\" \n      [buttonType]=\"buttonType\" \n      (onClick)=\"onClick($event)\" \n      [disabled]= \"disabled\"></ui-button>`,\n  props: {\n    disabled : boolean('disabled', false),\n    text : text('text', 'BUTTON'),\n    buttonType :  select(\n    \"Button type\",\n    [\"neutral\", \"neutral-outline\",  \n      \"sandstone\", \"sandstone-outline\", \n      \"classic\", \"classic-outline\" , \n      \"sunrise\", \"sunrise-outline\",\n      \"carbon\", \"carbon-outline\",\n      \"azul\", \"azul-outline\",\n      \"warmgray\", \"warmgray-outline\"],\n    \"classic\"),\n    onClick: () => action('Button clicked')('Click')\n  }\n})"
+                "defaultValue": "(args: any) => ({\n  template:  `\n    <ui-button \n      [text]=\"text\" \n      [buttontype]=\"buttontype\" \n      (onClick)=\"onClick($event)\" \n      [disabled]=\"disabled\"></ui-button>`,\n  props: {\n    text: 'Button',\n    disabled : boolean('disabled', false),\n    buttontype :  select(\n      \"Button type\",\n      [\"neutral\", \"neutral-outline\",  \n        \"sandstone\", \"sandstone-outline\", \n        \"classic\", \"classic-outline\" , \n        \"sunrise\", \"sunrise-outline\",\n        \"carbon\", \"carbon-outline\",\n        \"azul\", \"azul-outline\",\n        \"warmgray\", \"warmgray-outline\"],\n      \"classic\"),\n    onClick: () => action('Button clicked')('Click'),\n  }\n})"
+            },
+            {
+                "name": "classicIconButton",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "stories/icon-buttons/Classic-icon-button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "(args: any) => ({\n  template:  `\n    <ui-button \n      [buttontype]=\"buttontype\" \n      (onClick)=\"onClick($event)\" \n      [disabled]=\"disabled\"\n      [iconname]=\"iconname\"\n      [iconsize]=\"iconsize\"></ui-button>`,\n  props: {\n    disabled : boolean('disabled', false),\n    iconname: 'edit',\n    iconsize: '16',\n    buttontype :  select(\n      \"Button type\",\n      [\"neutral\", \"neutral-outline\",  \n        \"sandstone\", \"sandstone-outline\", \n        \"classic\", \"classic-outline\" , \n        \"sunrise\", \"sunrise-outline\",\n        \"carbon\", \"carbon-outline\",\n        \"azul\", \"azul-outline\",\n        \"warmgray\", \"warmgray-outline\"],\n      \"classic\"),\n    onClick: () => action('Button clicked')('Click'),\n  }\n})"
+            },
+            {
+                "name": "classicTextIconButton",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "stories/text-icon-buttons/Classic-text-icon-button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "(args: any) => ({\n  template:  `\n    <ui-button \n      [text]=\"text\" \n      [buttontype]=\"buttontype\" \n      (onClick)=\"onClick($event)\" \n      [disabled]=\"disabled\"\n      [iconname]=\"iconname\"\n      [iconsize]=\"iconsize\"\n      [iconplacement]=\"iconplacement\"></ui-button>`,\n  props: {\n    text: 'Button',\n    disabled : boolean('disabled', false),\n    iconname: 'edit',\n    iconsize: '16',\n    iconplacement: select(\n      \"Align Icon\", \n      [\"left\", \"right\"], \"left\"),\n    buttontype :  select(\n      \"Button type\",\n      [\"neutral\", \"neutral-outline\",  \n        \"sandstone\", \"sandstone-outline\", \n        \"classic\", \"classic-outline\" , \n        \"sunrise\", \"sunrise-outline\",\n        \"carbon\", \"carbon-outline\",\n        \"azul\", \"azul-outline\",\n        \"warmgray\", \"warmgray-outline\"],\n      \"classic\"),\n    onClick: () => action('Button clicked')('Click'),\n  }\n})"
+            },
+            {
+                "name": "context",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/alert-bar/src/test.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "require.context('./', true, /\\.spec\\.ts$/)"
             },
             {
                 "name": "context",
@@ -384,7 +562,36 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
-                "defaultValue": "() => ({\n  template:  `\n    <ui-button \n      [text]=\"text\" \n      [buttonType]=\"buttonType\" \n      (onClick)=\"onClick($event)\" \n      [disabled]= \"disabled\"></ui-button>`,\n  props: {\n    disabled : boolean('disabled', false),\n    text : text('text', 'BUTTON'),\n    buttonType :  select(\n    \"Button type\",\n    [\"neutral\", \"neutral-outline\",  \n      \"sandstone\", \"sandstone-outline\", \n      \"classic\", \"classic-outline\" , \n      \"sunrise\", \"sunrise-outline\",\n      \"carbon\", \"carbon-outline\",\n      \"azul\", \"azul-outline\",\n      \"warmgray\", \"warmgray-outline\"],\n    \"neutral\"),\n    onClick: () => action('Button clicked')('Click')\n  }\n})"
+                "defaultValue": "(args: any) => ({\n  template:  `\n    <ui-button \n      [text]=\"text\" \n      [buttontype]=\"buttontype\" \n      (onClick)=\"onClick($event)\" \n      [disabled]=\"disabled\"></ui-button>`,\n  props: {\n    text: 'Button',\n    disabled : boolean('disabled', false),\n    buttontype :  select(\n      \"Button type\",\n      [\"neutral\", \"neutral-outline\",  \n        \"sandstone\", \"sandstone-outline\", \n        \"classic\", \"classic-outline\" , \n        \"sunrise\", \"sunrise-outline\",\n        \"carbon\", \"carbon-outline\",\n        \"azul\", \"azul-outline\",\n        \"warmgray\", \"warmgray-outline\"],\n      \"neutral\"),\n    onClick: () => action('Button clicked')('Click'),\n  }\n})"
+            },
+            {
+                "name": "neutralIconButton",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "stories/icon-buttons/Neutral-icon-button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "(args: any) => ({\n  template:  `\n    <ui-button\n      [buttontype]=\"buttontype\" \n      (onClick)=\"onClick($event)\" \n      [disabled]=\"disabled\"\n      [iconname]=\"iconname\"\n      [iconsize]=\"iconsize\"></ui-button>`,\n  props: {\n    disabled : boolean('disabled', false),\n    iconname: 'edit',\n    iconsize: '16',\n    buttontype :  select(\n      \"Button type\",\n      [\"neutral\", \"neutral-outline\",  \n        \"sandstone\", \"sandstone-outline\", \n        \"classic\", \"classic-outline\" , \n        \"sunrise\", \"sunrise-outline\",\n        \"carbon\", \"carbon-outline\",\n        \"azul\", \"azul-outline\",\n        \"warmgray\", \"warmgray-outline\"],\n      \"neutral\"),\n    onClick: () => action('Button clicked')('Click'),\n  }\n})"
+            },
+            {
+                "name": "neutralTextIconButton",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "stories/text-icon-buttons/Neutral-text-icon-button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "(args: any) => ({\n  template:  `\n    <ui-button \n      [text]=\"text\" \n      [buttontype]=\"buttontype\" \n      (onClick)=\"onClick($event)\" \n      [disabled]=\"disabled\"\n      [iconname]=\"iconname\"\n      [iconsize]=\"iconsize\"\n      [iconplacement]=\"iconplacement\"></ui-button>`,\n  props: {\n    text: 'Button',\n    disabled : boolean('disabled', false),\n    iconname: 'edit',\n    iconsize: '16',\n    iconplacement: select(\n      \"Align Icon\", \n      [\"left\", \"right\"], \"left\"),\n    buttontype :  select(\n      \"Button type\",\n      [\"neutral\", \"neutral-outline\",  \n        \"sandstone\", \"sandstone-outline\", \n        \"classic\", \"classic-outline\" , \n        \"sunrise\", \"sunrise-outline\",\n        \"carbon\", \"carbon-outline\",\n        \"azul\", \"azul-outline\",\n        \"warmgray\", \"warmgray-outline\"],\n      \"neutral\"),\n    onClick: () => action('Button clicked')('Click'),\n  }\n})"
+            },
+            {
+                "name": "require",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/alert-bar/src/test.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "literal type"
             },
             {
                 "name": "require",
@@ -412,7 +619,27 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
-                "defaultValue": "() => ({\n  template:  `\n    <ui-button \n      [text]=\"text\" \n      [buttonType]=\"buttonType\" \n      (onClick)=\"onClick($event)\" \n      [disabled]= \"disabled\"></ui-button>`,\n  props: {\n    disabled : boolean('disabled', false),\n    text : text('text', 'BUTTON'),\n    buttonType :  select(\n    \"Button type\",\n    [\"neutral\", \"neutral-outline\",  \n      \"sandstone\", \"sandstone-outline\", \n      \"classic\", \"classic-outline\" , \n      \"sunrise\", \"sunrise-outline\",\n      \"carbon\", \"carbon-outline\",\n      \"azul\", \"azul-outline\",\n      \"warmgray\", \"warmgray-outline\"],\n    \"sandstone\"),\n    onClick: () => action('Button clicked')('Click')\n  }\n})"
+                "defaultValue": "(args: any) => ({\n  template:  `\n    <ui-button \n      [text]=\"text\" \n      [buttontype]=\"buttontype\" \n      (onClick)=\"onClick($event)\" \n      [disabled]=\"disabled\"></ui-button>`,\n  props: {\n    text: 'Button',\n    disabled : boolean('disabled', false),\n    buttontype :  select(\n      \"Button type\",\n      [\"neutral\", \"neutral-outline\",  \n        \"sandstone\", \"sandstone-outline\", \n        \"classic\", \"classic-outline\" , \n        \"sunrise\", \"sunrise-outline\",\n        \"carbon\", \"carbon-outline\",\n        \"azul\", \"azul-outline\",\n        \"warmgray\", \"warmgray-outline\"],\n      \"sandstone\"),\n    onClick: () => action('Button clicked')('Click'),\n  }\n})"
+            },
+            {
+                "name": "sandstoneIconButton",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "stories/icon-buttons/Sandstone-icon-button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "(args: any) => ({\n  template:  `\n    <ui-button \n      [buttontype]=\"buttontype\" \n      (onClick)=\"onClick($event)\" \n      [disabled]=\"disabled\"\n      [iconname]=\"iconname\"\n      [iconsize]=\"iconsize\"></ui-button>`,\n  props: {\n    disabled : boolean('disabled', false),\n    iconname: 'edit',\n    iconsize: '16',\n    buttontype :  select(\n      \"Button type\",\n      [\"neutral\", \"neutral-outline\",  \n        \"sandstone\", \"sandstone-outline\", \n        \"classic\", \"classic-outline\" , \n        \"sunrise\", \"sunrise-outline\",\n        \"carbon\", \"carbon-outline\",\n        \"azul\", \"azul-outline\",\n        \"warmgray\", \"warmgray-outline\"],\n      \"sandstone\"),\n    onClick: () => action('Button clicked')('Click'),\n  }\n})"
+            },
+            {
+                "name": "sandstoneTextIconButton",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "stories/text-icon-buttons/Sandstone-text-icon-button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "(args: any) => ({\n  template:  `\n    <ui-button \n      [text]=\"text\" \n      [buttontype]=\"buttontype\" \n      (onClick)=\"onClick($event)\" \n      [disabled]=\"disabled\"\n      [iconname]=\"iconname\"\n      [iconsize]=\"iconsize\"\n      [iconplacement]=\"iconplacement\"></ui-button>`,\n  props: {\n    text: 'Button',\n    disabled : boolean('disabled', false),\n    iconname: 'edit',\n    iconsize: '16',\n    iconplacement: select(\n      \"Align Icon\", \n      [\"left\", \"right\"], \"left\"),\n    buttontype :  select(\n      \"Button type\",\n      [\"neutral\", \"neutral-outline\",  \n        \"sandstone\", \"sandstone-outline\", \n        \"classic\", \"classic-outline\" , \n        \"sunrise\", \"sunrise-outline\",\n        \"carbon\", \"carbon-outline\",\n        \"azul\", \"azul-outline\",\n        \"warmgray\", \"warmgray-outline\"],\n      \"sandstone\"),\n    onClick: () => action('Button clicked')('Click'),\n  }\n})"
             },
             {
                 "name": "sunriseButton",
@@ -422,17 +649,57 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
-                "defaultValue": "() => ({\n  template:  `\n    <ui-button \n      [text]=\"text\" \n      [buttonType]=\"buttonType\" \n      (onClick)=\"onClick($event)\" \n      [disabled]= \"disabled\"></ui-button>`,\n  props: {\n    disabled : boolean('disabled', false),\n    text : text('text', 'BUTTON'),\n    buttonType :  select(\n    \"Button type\",\n    [\"neutral\", \"neutral-outline\",  \n      \"sandstone\", \"sandstone-outline\", \n      \"classic\", \"classic-outline\" , \n      \"sunrise\", \"sunrise-outline\",\n      \"carbon\", \"carbon-outline\",\n      \"azul\", \"azul-outline\",\n      \"warmgray\", \"warmgray-outline\"],\n    \"sunrise\"),\n    onClick: () => action('Button clicked')('Click')\n  }\n})"
+                "defaultValue": "(args: any) => ({\n  template:  `\n    <ui-button \n      [text]=\"text\" \n      [buttontype]=\"buttontype\" \n      (onClick)=\"onClick($event)\" \n      [disabled]=\"disabled\"></ui-button>`,\n  props: {\n    text: 'Button',\n    disabled : boolean('disabled', false),\n    buttontype :  select(\n      \"Button type\",\n      [\"neutral\", \"neutral-outline\",  \n        \"sandstone\", \"sandstone-outline\", \n        \"classic\", \"classic-outline\" , \n        \"sunrise\", \"sunrise-outline\",\n        \"carbon\", \"carbon-outline\",\n        \"azul\", \"azul-outline\",\n        \"warmgray\", \"warmgray-outline\"],\n      \"sunrise\"),\n    onClick: () => action('Button clicked')('Click'),\n  }\n})"
+            },
+            {
+                "name": "sunriseIconButton",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "stories/icon-buttons/Sunrise-icon-button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "(args: any) => ({\n  template:  `\n    <ui-button \n      [buttontype]=\"buttontype\" \n      (onClick)=\"onClick($event)\" \n      [disabled]=\"disabled\"\n      [iconname]=\"iconname\"\n      [iconsize]=\"iconsize\"></ui-button>`,\n  props: {\n    disabled : boolean('disabled', false),\n    iconname: 'edit',\n    iconsize: '16',\n    buttontype :  select(\n      \"Button type\",\n      [\"neutral\", \"neutral-outline\",  \n        \"sandstone\", \"sandstone-outline\", \n        \"classic\", \"classic-outline\" , \n        \"sunrise\", \"sunrise-outline\",\n        \"carbon\", \"carbon-outline\",\n        \"azul\", \"azul-outline\",\n        \"warmgray\", \"warmgray-outline\"],\n      \"sunrise\"),\n    onClick: () => action('Button clicked')('Click'),\n  }\n})"
+            },
+            {
+                "name": "sunriseTextIconButton",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "stories/text-icon-buttons/Sunrise-text-icon-button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "(args: any) => ({\n  template:  `\n    <ui-button \n      [text]=\"text\" \n      [buttontype]=\"buttontype\" \n      (onClick)=\"onClick($event)\" \n      [disabled]=\"disabled\"\n      [iconname]=\"iconname\"\n      [iconsize]=\"iconsize\"\n      [iconplacement]=\"iconplacement\"></ui-button>`,\n  props: {\n    text: 'Button',\n    disabled : boolean('disabled', false),\n    iconname: 'edit',\n    iconsize: '16',\n    iconplacement: select(\n      \"Align Icon\", \n      [\"left\", \"right\"], \"left\"),\n    buttontype :  select(\n      \"Button type\",\n      [\"neutral\", \"neutral-outline\",  \n        \"sandstone\", \"sandstone-outline\", \n        \"classic\", \"classic-outline\" , \n        \"sunrise\", \"sunrise-outline\",\n        \"carbon\", \"carbon-outline\",\n        \"azul\", \"azul-outline\",\n        \"warmgray\", \"warmgray-outline\"],\n      \"sunrise\"),\n    onClick: () => action('Button clicked')('Click'),\n  }\n})"
             },
             {
                 "name": "warmgrayButton",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "stories/buttons/warmgray-button.stories.ts",
+                "file": "stories/buttons/Warmgray-button.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
-                "defaultValue": "() => ({\n  template:  `\n    <ui-button \n      [text]=\"text\" \n      [buttonType]=\"buttonType\" \n      (onClick)=\"onClick($event)\" \n      [disabled]= \"disabled\"></ui-button>`,\n  props: {\n    disabled : boolean('disabled', false),\n    text : text('text', 'BUTTON'),\n    buttonType :  select(\n    \"Button type\",\n    [\"neutral\", \"neutral-outline\",  \n      \"sandstone\", \"sandstone-outline\", \n      \"classic\", \"classic-outline\" , \n      \"sunrise\", \"sunrise-outline\",\n      \"carbon\", \"carbon-outline\",\n      \"azul\", \"azul-outline\",\n      \"warmgray\", \"warmgray-outline\"],\n    \"warmgray\"),\n    onClick: () => action('Button clicked')('Click')\n  }\n})"
+                "defaultValue": "(args: any) => ({\n  template:  `\n    <ui-button \n      [text]=\"text\" \n      [buttontype]=\"buttontype\" \n      (onClick)=\"onClick($event)\" \n      [disabled]=\"disabled\"></ui-button>`,\n  props: {\n    text: 'Button',\n    disabled : boolean('disabled', false),\n    buttontype :  select(\n      \"Button type\",\n      [\"neutral\", \"neutral-outline\",  \n        \"sandstone\", \"sandstone-outline\", \n        \"classic\", \"classic-outline\" , \n        \"sunrise\", \"sunrise-outline\",\n        \"carbon\", \"carbon-outline\",\n        \"azul\", \"azul-outline\",\n        \"warmgray\", \"warmgray-outline\"],\n      \"warmgray\"),\n    onClick: () => action('Button clicked')('Click'),\n  }\n})"
+            },
+            {
+                "name": "warmgrayIconButton",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "stories/icon-buttons/Warmgray-icon-button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "(args: any) => ({\n  template:  `\n    <ui-button \n      [buttontype]=\"buttontype\" \n      (onClick)=\"onClick($event)\" \n      [disabled]=\"disabled\"\n      [iconname]=\"iconname\"\n      [iconsize]=\"iconsize\"></ui-button>`,\n  props: {\n    disabled : boolean('disabled', false),\n    iconname: 'edit',\n    iconsize: '16',\n    buttontype :  select(\n      \"Button type\",\n      [\"neutral\", \"neutral-outline\",  \n        \"sandstone\", \"sandstone-outline\", \n        \"classic\", \"classic-outline\" , \n        \"sunrise\", \"sunrise-outline\",\n        \"carbon\", \"carbon-outline\",\n        \"azul\", \"azul-outline\",\n        \"warmgray\", \"warmgray-outline\"],\n      \"warmgray\"),\n    onClick: () => action('Button clicked')('Click'),\n  }\n})"
+            },
+            {
+                "name": "warmgrayTextIconButton",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "stories/text-icon-buttons/Warmgray-text-icon-button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "(args: any) => ({\n  template:  `\n    <ui-button \n      [text]=\"text\" \n      [buttontype]=\"buttontype\" \n      (onClick)=\"onClick($event)\" \n      [disabled]=\"disabled\"\n      [iconname]=\"iconname\"\n      [iconsize]=\"iconsize\"\n      [iconplacement]=\"iconplacement\"></ui-button>`,\n  props: {\n    text: 'Button',\n    disabled : boolean('disabled', false),\n    iconname: 'edit',\n    iconsize: '16',\n    iconplacement: select(\n      \"Align Icon\", \n      [\"left\", \"right\"], \"left\"),\n    buttontype :  select(\n      \"Button type\",\n      [\"neutral\", \"neutral-outline\",  \n        \"sandstone\", \"sandstone-outline\", \n        \"classic\", \"classic-outline\" , \n        \"sunrise\", \"sunrise-outline\",\n        \"carbon\", \"carbon-outline\",\n        \"azul\", \"azul-outline\",\n        \"warmgray\", \"warmgray-outline\"],\n      \"warmgray\"),\n    onClick: () => action('Button clicked')('Click'),\n  }\n})"
             }
         ],
         "functions": [],
@@ -448,7 +715,31 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
-                    "defaultValue": "() => ({\n  template:  `\n    <ui-button \n      [text]=\"text\" \n      [buttonType]=\"buttonType\" \n      (onClick)=\"onClick($event)\" \n      [disabled]= \"disabled\"\n      [iconName] = \"iconName\"\n      [iconSize] = \"iconSize\"></ui-button>`,\n  props: {\n    disabled : boolean('disabled', false),\n    text : text('text', 'BUTTON'),\n    iconName: text('Icon Name', 'edit'),\n    iconSize: select(\n      \"Icon Size\", \n      [16, 18, 24, 36, 48], 16),\n    buttonType :  select(\n    \"Button type\",\n    [\"neutral\", \"neutral-outline\",  \n      \"sandstone\", \"sandstone-outline\", \n      \"classic\", \"classic-outline\" , \n      \"sunrise\", \"sunrise-outline\",\n      \"carbon\", \"carbon-outline\",\n      \"azul\", \"azul-outline\",\n      \"warmgray\", \"warmgray-outline\"],\n    \"azul\"),\n    onClick: () => action('Button clicked')('Click'),\n  }\n})"
+                    "defaultValue": "(args: any) => ({\n  template:  `\n    <ui-button \n      [text]=\"text\" \n      [buttontype]=\"buttontype\" \n      (onClick)=\"onClick($event)\" \n      [disabled]=\"disabled\"></ui-button>`,\n  props: {\n    text: 'Button',\n    disabled : boolean('disabled', false),\n    buttontype :  select(\n      \"Button type\",\n      [\"neutral\", \"neutral-outline\",  \n        \"sandstone\", \"sandstone-outline\", \n        \"classic\", \"classic-outline\" , \n        \"sunrise\", \"sunrise-outline\",\n        \"carbon\", \"carbon-outline\",\n        \"azul\", \"azul-outline\",\n        \"warmgray\", \"warmgray-outline\"],\n      \"azul\"),\n    onClick: () => action('Button clicked')('Click'),\n    }\n})"
+                }
+            ],
+            "stories/icon-buttons/Azul-icon-button.stories.ts": [
+                {
+                    "name": "azulIconButton",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "stories/icon-buttons/Azul-icon-button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "(args: any) => ({\n  template:  `\n    <ui-button \n      [buttontype]=\"buttontype\" \n      (onClick)=\"onClick($event)\" \n      [disabled]=\"disabled\"\n      [iconname]=\"iconname\"\n      [iconsize]=\"iconsize\"\n      ></ui-button>`,\n  props: {\n    disabled : boolean('disabled', false),\n    iconname: 'edit',\n    iconsize: '16',\n    buttontype :  select(\n      \"Button type\",\n      [\"neutral\", \"neutral-outline\",  \n        \"sandstone\", \"sandstone-outline\", \n        \"classic\", \"classic-outline\" , \n        \"sunrise\", \"sunrise-outline\",\n        \"carbon\", \"carbon-outline\",\n        \"azul\", \"azul-outline\",\n        \"warmgray\", \"warmgray-outline\"],\n      \"azul\"),\n  onClick: () => action('Button clicked')('Click'),\n  }\n})"
+                }
+            ],
+            "stories/text-icon-buttons/Azul-text-icon-button.stories.ts": [
+                {
+                    "name": "azulTextIconButton",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "stories/text-icon-buttons/Azul-text-icon-button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "(args: any) => ({\n  template:  `\n    <ui-button \n      [text]=\"text\" \n      [buttontype]=\"buttontype\" \n      (onClick)=\"onClick($event)\" \n      [disabled]=\"disabled\"\n      [iconname]=\"iconname\"\n      [iconsize]=\"iconsize\"\n      [iconplacement]=\"iconplacement\"\n      ></ui-button>`,\n  props: {\n    text: 'Button',\n    disabled : boolean('disabled', false),\n    iconname: 'edit',\n    iconsize: '16',\n    iconplacement: select(\n      \"Align Icon\", \n      [\"left\", \"right\"], \"left\"),\n    buttontype :  select(\n      \"Button type\",\n      [\"neutral\", \"neutral-outline\",  \n        \"sandstone\", \"sandstone-outline\", \n        \"classic\", \"classic-outline\" , \n        \"sunrise\", \"sunrise-outline\",\n        \"carbon\", \"carbon-outline\",\n        \"azul\", \"azul-outline\",\n        \"warmgray\", \"warmgray-outline\"],\n      \"azul\"),\n  onClick: () => action('Button clicked')('Click'),\n  }\n})"
                 }
             ],
             "stories/buttons/Classic-button.stories.ts": [
@@ -460,7 +751,52 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
-                    "defaultValue": "() => ({\n  template:  `\n    <ui-button \n      [text]=\"text\" \n      [buttonType]=\"buttonType\" \n      (onClick)=\"onClick($event)\" \n      [disabled]= \"disabled\"></ui-button>`,\n  props: {\n    disabled : boolean('disabled', false),\n    text : text('text', 'BUTTON'),\n    buttonType :  select(\n    \"Button type\",\n    [\"neutral\", \"neutral-outline\",  \n      \"sandstone\", \"sandstone-outline\", \n      \"classic\", \"classic-outline\" , \n      \"sunrise\", \"sunrise-outline\",\n      \"carbon\", \"carbon-outline\",\n      \"azul\", \"azul-outline\",\n      \"warmgray\", \"warmgray-outline\"],\n    \"classic\"),\n    onClick: () => action('Button clicked')('Click')\n  }\n})"
+                    "defaultValue": "(args: any) => ({\n  template:  `\n    <ui-button \n      [text]=\"text\" \n      [buttontype]=\"buttontype\" \n      (onClick)=\"onClick($event)\" \n      [disabled]=\"disabled\"></ui-button>`,\n  props: {\n    text: 'Button',\n    disabled : boolean('disabled', false),\n    buttontype :  select(\n      \"Button type\",\n      [\"neutral\", \"neutral-outline\",  \n        \"sandstone\", \"sandstone-outline\", \n        \"classic\", \"classic-outline\" , \n        \"sunrise\", \"sunrise-outline\",\n        \"carbon\", \"carbon-outline\",\n        \"azul\", \"azul-outline\",\n        \"warmgray\", \"warmgray-outline\"],\n      \"classic\"),\n    onClick: () => action('Button clicked')('Click'),\n  }\n})"
+                }
+            ],
+            "stories/icon-buttons/Classic-icon-button.stories.ts": [
+                {
+                    "name": "classicIconButton",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "stories/icon-buttons/Classic-icon-button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "(args: any) => ({\n  template:  `\n    <ui-button \n      [buttontype]=\"buttontype\" \n      (onClick)=\"onClick($event)\" \n      [disabled]=\"disabled\"\n      [iconname]=\"iconname\"\n      [iconsize]=\"iconsize\"></ui-button>`,\n  props: {\n    disabled : boolean('disabled', false),\n    iconname: 'edit',\n    iconsize: '16',\n    buttontype :  select(\n      \"Button type\",\n      [\"neutral\", \"neutral-outline\",  \n        \"sandstone\", \"sandstone-outline\", \n        \"classic\", \"classic-outline\" , \n        \"sunrise\", \"sunrise-outline\",\n        \"carbon\", \"carbon-outline\",\n        \"azul\", \"azul-outline\",\n        \"warmgray\", \"warmgray-outline\"],\n      \"classic\"),\n    onClick: () => action('Button clicked')('Click'),\n  }\n})"
+                }
+            ],
+            "stories/text-icon-buttons/Classic-text-icon-button.stories.ts": [
+                {
+                    "name": "classicTextIconButton",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "stories/text-icon-buttons/Classic-text-icon-button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "(args: any) => ({\n  template:  `\n    <ui-button \n      [text]=\"text\" \n      [buttontype]=\"buttontype\" \n      (onClick)=\"onClick($event)\" \n      [disabled]=\"disabled\"\n      [iconname]=\"iconname\"\n      [iconsize]=\"iconsize\"\n      [iconplacement]=\"iconplacement\"></ui-button>`,\n  props: {\n    text: 'Button',\n    disabled : boolean('disabled', false),\n    iconname: 'edit',\n    iconsize: '16',\n    iconplacement: select(\n      \"Align Icon\", \n      [\"left\", \"right\"], \"left\"),\n    buttontype :  select(\n      \"Button type\",\n      [\"neutral\", \"neutral-outline\",  \n        \"sandstone\", \"sandstone-outline\", \n        \"classic\", \"classic-outline\" , \n        \"sunrise\", \"sunrise-outline\",\n        \"carbon\", \"carbon-outline\",\n        \"azul\", \"azul-outline\",\n        \"warmgray\", \"warmgray-outline\"],\n      \"classic\"),\n    onClick: () => action('Button clicked')('Click'),\n  }\n})"
+                }
+            ],
+            "projects/alert-bar/src/test.ts": [
+                {
+                    "name": "context",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/alert-bar/src/test.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "require.context('./', true, /\\.spec\\.ts$/)"
+                },
+                {
+                    "name": "require",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/alert-bar/src/test.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "literal type"
                 }
             ],
             "projects/button/src/test.ts": [
@@ -538,7 +874,31 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
-                    "defaultValue": "() => ({\n  template:  `\n    <ui-button \n      [text]=\"text\" \n      [buttonType]=\"buttonType\" \n      (onClick)=\"onClick($event)\" \n      [disabled]= \"disabled\"></ui-button>`,\n  props: {\n    disabled : boolean('disabled', false),\n    text : text('text', 'BUTTON'),\n    buttonType :  select(\n    \"Button type\",\n    [\"neutral\", \"neutral-outline\",  \n      \"sandstone\", \"sandstone-outline\", \n      \"classic\", \"classic-outline\" , \n      \"sunrise\", \"sunrise-outline\",\n      \"carbon\", \"carbon-outline\",\n      \"azul\", \"azul-outline\",\n      \"warmgray\", \"warmgray-outline\"],\n    \"neutral\"),\n    onClick: () => action('Button clicked')('Click')\n  }\n})"
+                    "defaultValue": "(args: any) => ({\n  template:  `\n    <ui-button \n      [text]=\"text\" \n      [buttontype]=\"buttontype\" \n      (onClick)=\"onClick($event)\" \n      [disabled]=\"disabled\"></ui-button>`,\n  props: {\n    text: 'Button',\n    disabled : boolean('disabled', false),\n    buttontype :  select(\n      \"Button type\",\n      [\"neutral\", \"neutral-outline\",  \n        \"sandstone\", \"sandstone-outline\", \n        \"classic\", \"classic-outline\" , \n        \"sunrise\", \"sunrise-outline\",\n        \"carbon\", \"carbon-outline\",\n        \"azul\", \"azul-outline\",\n        \"warmgray\", \"warmgray-outline\"],\n      \"neutral\"),\n    onClick: () => action('Button clicked')('Click'),\n  }\n})"
+                }
+            ],
+            "stories/icon-buttons/Neutral-icon-button.stories.ts": [
+                {
+                    "name": "neutralIconButton",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "stories/icon-buttons/Neutral-icon-button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "(args: any) => ({\n  template:  `\n    <ui-button\n      [buttontype]=\"buttontype\" \n      (onClick)=\"onClick($event)\" \n      [disabled]=\"disabled\"\n      [iconname]=\"iconname\"\n      [iconsize]=\"iconsize\"></ui-button>`,\n  props: {\n    disabled : boolean('disabled', false),\n    iconname: 'edit',\n    iconsize: '16',\n    buttontype :  select(\n      \"Button type\",\n      [\"neutral\", \"neutral-outline\",  \n        \"sandstone\", \"sandstone-outline\", \n        \"classic\", \"classic-outline\" , \n        \"sunrise\", \"sunrise-outline\",\n        \"carbon\", \"carbon-outline\",\n        \"azul\", \"azul-outline\",\n        \"warmgray\", \"warmgray-outline\"],\n      \"neutral\"),\n    onClick: () => action('Button clicked')('Click'),\n  }\n})"
+                }
+            ],
+            "stories/text-icon-buttons/Neutral-text-icon-button.stories.ts": [
+                {
+                    "name": "neutralTextIconButton",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "stories/text-icon-buttons/Neutral-text-icon-button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "(args: any) => ({\n  template:  `\n    <ui-button \n      [text]=\"text\" \n      [buttontype]=\"buttontype\" \n      (onClick)=\"onClick($event)\" \n      [disabled]=\"disabled\"\n      [iconname]=\"iconname\"\n      [iconsize]=\"iconsize\"\n      [iconplacement]=\"iconplacement\"></ui-button>`,\n  props: {\n    text: 'Button',\n    disabled : boolean('disabled', false),\n    iconname: 'edit',\n    iconsize: '16',\n    iconplacement: select(\n      \"Align Icon\", \n      [\"left\", \"right\"], \"left\"),\n    buttontype :  select(\n      \"Button type\",\n      [\"neutral\", \"neutral-outline\",  \n        \"sandstone\", \"sandstone-outline\", \n        \"classic\", \"classic-outline\" , \n        \"sunrise\", \"sunrise-outline\",\n        \"carbon\", \"carbon-outline\",\n        \"azul\", \"azul-outline\",\n        \"warmgray\", \"warmgray-outline\"],\n      \"neutral\"),\n    onClick: () => action('Button clicked')('Click'),\n  }\n})"
                 }
             ],
             "stories/buttons/Sandstone-button.stories.ts": [
@@ -550,7 +910,31 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
-                    "defaultValue": "() => ({\n  template:  `\n    <ui-button \n      [text]=\"text\" \n      [buttonType]=\"buttonType\" \n      (onClick)=\"onClick($event)\" \n      [disabled]= \"disabled\"></ui-button>`,\n  props: {\n    disabled : boolean('disabled', false),\n    text : text('text', 'BUTTON'),\n    buttonType :  select(\n    \"Button type\",\n    [\"neutral\", \"neutral-outline\",  \n      \"sandstone\", \"sandstone-outline\", \n      \"classic\", \"classic-outline\" , \n      \"sunrise\", \"sunrise-outline\",\n      \"carbon\", \"carbon-outline\",\n      \"azul\", \"azul-outline\",\n      \"warmgray\", \"warmgray-outline\"],\n    \"sandstone\"),\n    onClick: () => action('Button clicked')('Click')\n  }\n})"
+                    "defaultValue": "(args: any) => ({\n  template:  `\n    <ui-button \n      [text]=\"text\" \n      [buttontype]=\"buttontype\" \n      (onClick)=\"onClick($event)\" \n      [disabled]=\"disabled\"></ui-button>`,\n  props: {\n    text: 'Button',\n    disabled : boolean('disabled', false),\n    buttontype :  select(\n      \"Button type\",\n      [\"neutral\", \"neutral-outline\",  \n        \"sandstone\", \"sandstone-outline\", \n        \"classic\", \"classic-outline\" , \n        \"sunrise\", \"sunrise-outline\",\n        \"carbon\", \"carbon-outline\",\n        \"azul\", \"azul-outline\",\n        \"warmgray\", \"warmgray-outline\"],\n      \"sandstone\"),\n    onClick: () => action('Button clicked')('Click'),\n  }\n})"
+                }
+            ],
+            "stories/icon-buttons/Sandstone-icon-button.stories.ts": [
+                {
+                    "name": "sandstoneIconButton",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "stories/icon-buttons/Sandstone-icon-button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "(args: any) => ({\n  template:  `\n    <ui-button \n      [buttontype]=\"buttontype\" \n      (onClick)=\"onClick($event)\" \n      [disabled]=\"disabled\"\n      [iconname]=\"iconname\"\n      [iconsize]=\"iconsize\"></ui-button>`,\n  props: {\n    disabled : boolean('disabled', false),\n    iconname: 'edit',\n    iconsize: '16',\n    buttontype :  select(\n      \"Button type\",\n      [\"neutral\", \"neutral-outline\",  \n        \"sandstone\", \"sandstone-outline\", \n        \"classic\", \"classic-outline\" , \n        \"sunrise\", \"sunrise-outline\",\n        \"carbon\", \"carbon-outline\",\n        \"azul\", \"azul-outline\",\n        \"warmgray\", \"warmgray-outline\"],\n      \"sandstone\"),\n    onClick: () => action('Button clicked')('Click'),\n  }\n})"
+                }
+            ],
+            "stories/text-icon-buttons/Sandstone-text-icon-button.stories.ts": [
+                {
+                    "name": "sandstoneTextIconButton",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "stories/text-icon-buttons/Sandstone-text-icon-button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "(args: any) => ({\n  template:  `\n    <ui-button \n      [text]=\"text\" \n      [buttontype]=\"buttontype\" \n      (onClick)=\"onClick($event)\" \n      [disabled]=\"disabled\"\n      [iconname]=\"iconname\"\n      [iconsize]=\"iconsize\"\n      [iconplacement]=\"iconplacement\"></ui-button>`,\n  props: {\n    text: 'Button',\n    disabled : boolean('disabled', false),\n    iconname: 'edit',\n    iconsize: '16',\n    iconplacement: select(\n      \"Align Icon\", \n      [\"left\", \"right\"], \"left\"),\n    buttontype :  select(\n      \"Button type\",\n      [\"neutral\", \"neutral-outline\",  \n        \"sandstone\", \"sandstone-outline\", \n        \"classic\", \"classic-outline\" , \n        \"sunrise\", \"sunrise-outline\",\n        \"carbon\", \"carbon-outline\",\n        \"azul\", \"azul-outline\",\n        \"warmgray\", \"warmgray-outline\"],\n      \"sandstone\"),\n    onClick: () => action('Button clicked')('Click'),\n  }\n})"
                 }
             ],
             "stories/buttons/Sunrise-button.stories.ts": [
@@ -562,19 +946,67 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
-                    "defaultValue": "() => ({\n  template:  `\n    <ui-button \n      [text]=\"text\" \n      [buttonType]=\"buttonType\" \n      (onClick)=\"onClick($event)\" \n      [disabled]= \"disabled\"></ui-button>`,\n  props: {\n    disabled : boolean('disabled', false),\n    text : text('text', 'BUTTON'),\n    buttonType :  select(\n    \"Button type\",\n    [\"neutral\", \"neutral-outline\",  \n      \"sandstone\", \"sandstone-outline\", \n      \"classic\", \"classic-outline\" , \n      \"sunrise\", \"sunrise-outline\",\n      \"carbon\", \"carbon-outline\",\n      \"azul\", \"azul-outline\",\n      \"warmgray\", \"warmgray-outline\"],\n    \"sunrise\"),\n    onClick: () => action('Button clicked')('Click')\n  }\n})"
+                    "defaultValue": "(args: any) => ({\n  template:  `\n    <ui-button \n      [text]=\"text\" \n      [buttontype]=\"buttontype\" \n      (onClick)=\"onClick($event)\" \n      [disabled]=\"disabled\"></ui-button>`,\n  props: {\n    text: 'Button',\n    disabled : boolean('disabled', false),\n    buttontype :  select(\n      \"Button type\",\n      [\"neutral\", \"neutral-outline\",  \n        \"sandstone\", \"sandstone-outline\", \n        \"classic\", \"classic-outline\" , \n        \"sunrise\", \"sunrise-outline\",\n        \"carbon\", \"carbon-outline\",\n        \"azul\", \"azul-outline\",\n        \"warmgray\", \"warmgray-outline\"],\n      \"sunrise\"),\n    onClick: () => action('Button clicked')('Click'),\n  }\n})"
                 }
             ],
-            "stories/buttons/warmgray-button.stories.ts": [
+            "stories/icon-buttons/Sunrise-icon-button.stories.ts": [
+                {
+                    "name": "sunriseIconButton",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "stories/icon-buttons/Sunrise-icon-button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "(args: any) => ({\n  template:  `\n    <ui-button \n      [buttontype]=\"buttontype\" \n      (onClick)=\"onClick($event)\" \n      [disabled]=\"disabled\"\n      [iconname]=\"iconname\"\n      [iconsize]=\"iconsize\"></ui-button>`,\n  props: {\n    disabled : boolean('disabled', false),\n    iconname: 'edit',\n    iconsize: '16',\n    buttontype :  select(\n      \"Button type\",\n      [\"neutral\", \"neutral-outline\",  \n        \"sandstone\", \"sandstone-outline\", \n        \"classic\", \"classic-outline\" , \n        \"sunrise\", \"sunrise-outline\",\n        \"carbon\", \"carbon-outline\",\n        \"azul\", \"azul-outline\",\n        \"warmgray\", \"warmgray-outline\"],\n      \"sunrise\"),\n    onClick: () => action('Button clicked')('Click'),\n  }\n})"
+                }
+            ],
+            "stories/text-icon-buttons/Sunrise-text-icon-button.stories.ts": [
+                {
+                    "name": "sunriseTextIconButton",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "stories/text-icon-buttons/Sunrise-text-icon-button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "(args: any) => ({\n  template:  `\n    <ui-button \n      [text]=\"text\" \n      [buttontype]=\"buttontype\" \n      (onClick)=\"onClick($event)\" \n      [disabled]=\"disabled\"\n      [iconname]=\"iconname\"\n      [iconsize]=\"iconsize\"\n      [iconplacement]=\"iconplacement\"></ui-button>`,\n  props: {\n    text: 'Button',\n    disabled : boolean('disabled', false),\n    iconname: 'edit',\n    iconsize: '16',\n    iconplacement: select(\n      \"Align Icon\", \n      [\"left\", \"right\"], \"left\"),\n    buttontype :  select(\n      \"Button type\",\n      [\"neutral\", \"neutral-outline\",  \n        \"sandstone\", \"sandstone-outline\", \n        \"classic\", \"classic-outline\" , \n        \"sunrise\", \"sunrise-outline\",\n        \"carbon\", \"carbon-outline\",\n        \"azul\", \"azul-outline\",\n        \"warmgray\", \"warmgray-outline\"],\n      \"sunrise\"),\n    onClick: () => action('Button clicked')('Click'),\n  }\n})"
+                }
+            ],
+            "stories/buttons/Warmgray-button.stories.ts": [
                 {
                     "name": "warmgrayButton",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "stories/buttons/warmgray-button.stories.ts",
+                    "file": "stories/buttons/Warmgray-button.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
-                    "defaultValue": "() => ({\n  template:  `\n    <ui-button \n      [text]=\"text\" \n      [buttonType]=\"buttonType\" \n      (onClick)=\"onClick($event)\" \n      [disabled]= \"disabled\"></ui-button>`,\n  props: {\n    disabled : boolean('disabled', false),\n    text : text('text', 'BUTTON'),\n    buttonType :  select(\n    \"Button type\",\n    [\"neutral\", \"neutral-outline\",  \n      \"sandstone\", \"sandstone-outline\", \n      \"classic\", \"classic-outline\" , \n      \"sunrise\", \"sunrise-outline\",\n      \"carbon\", \"carbon-outline\",\n      \"azul\", \"azul-outline\",\n      \"warmgray\", \"warmgray-outline\"],\n    \"warmgray\"),\n    onClick: () => action('Button clicked')('Click')\n  }\n})"
+                    "defaultValue": "(args: any) => ({\n  template:  `\n    <ui-button \n      [text]=\"text\" \n      [buttontype]=\"buttontype\" \n      (onClick)=\"onClick($event)\" \n      [disabled]=\"disabled\"></ui-button>`,\n  props: {\n    text: 'Button',\n    disabled : boolean('disabled', false),\n    buttontype :  select(\n      \"Button type\",\n      [\"neutral\", \"neutral-outline\",  \n        \"sandstone\", \"sandstone-outline\", \n        \"classic\", \"classic-outline\" , \n        \"sunrise\", \"sunrise-outline\",\n        \"carbon\", \"carbon-outline\",\n        \"azul\", \"azul-outline\",\n        \"warmgray\", \"warmgray-outline\"],\n      \"warmgray\"),\n    onClick: () => action('Button clicked')('Click'),\n  }\n})"
+                }
+            ],
+            "stories/icon-buttons/Warmgray-icon-button.stories.ts": [
+                {
+                    "name": "warmgrayIconButton",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "stories/icon-buttons/Warmgray-icon-button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "(args: any) => ({\n  template:  `\n    <ui-button \n      [buttontype]=\"buttontype\" \n      (onClick)=\"onClick($event)\" \n      [disabled]=\"disabled\"\n      [iconname]=\"iconname\"\n      [iconsize]=\"iconsize\"></ui-button>`,\n  props: {\n    disabled : boolean('disabled', false),\n    iconname: 'edit',\n    iconsize: '16',\n    buttontype :  select(\n      \"Button type\",\n      [\"neutral\", \"neutral-outline\",  \n        \"sandstone\", \"sandstone-outline\", \n        \"classic\", \"classic-outline\" , \n        \"sunrise\", \"sunrise-outline\",\n        \"carbon\", \"carbon-outline\",\n        \"azul\", \"azul-outline\",\n        \"warmgray\", \"warmgray-outline\"],\n      \"warmgray\"),\n    onClick: () => action('Button clicked')('Click'),\n  }\n})"
+                }
+            ],
+            "stories/text-icon-buttons/Warmgray-text-icon-button.stories.ts": [
+                {
+                    "name": "warmgrayTextIconButton",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "stories/text-icon-buttons/Warmgray-text-icon-button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "(args: any) => ({\n  template:  `\n    <ui-button \n      [text]=\"text\" \n      [buttontype]=\"buttontype\" \n      (onClick)=\"onClick($event)\" \n      [disabled]=\"disabled\"\n      [iconname]=\"iconname\"\n      [iconsize]=\"iconsize\"\n      [iconplacement]=\"iconplacement\"></ui-button>`,\n  props: {\n    text: 'Button',\n    disabled : boolean('disabled', false),\n    iconname: 'edit',\n    iconsize: '16',\n    iconplacement: select(\n      \"Align Icon\", \n      [\"left\", \"right\"], \"left\"),\n    buttontype :  select(\n      \"Button type\",\n      [\"neutral\", \"neutral-outline\",  \n        \"sandstone\", \"sandstone-outline\", \n        \"classic\", \"classic-outline\" , \n        \"sunrise\", \"sunrise-outline\",\n        \"carbon\", \"carbon-outline\",\n        \"azul\", \"azul-outline\",\n        \"warmgray\", \"warmgray-outline\"],\n      \"warmgray\"),\n    onClick: () => action('Button clicked')('Click'),\n  }\n})"
                 }
             ]
         },
@@ -588,12 +1020,50 @@
         "status": "low",
         "files": [
             {
+                "filePath": "projects/alert-bar/src/lib/alert-bar.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "AlertBarComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/alert-bar/src/lib/alert-bar.service.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "AlertBarService",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/alert-bar/src/test.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "context",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/alert-bar/src/test.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "require",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
                 "filePath": "projects/button/src/lib/button.component.ts",
                 "type": "component",
                 "linktype": "component",
                 "name": "ButtonComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/9",
+                "coverageCount": "0/10",
                 "status": "low"
             },
             {
@@ -725,11 +1195,131 @@
                 "status": "low"
             },
             {
-                "filePath": "stories/buttons/warmgray-button.stories.ts",
+                "filePath": "stories/buttons/Warmgray-button.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
                 "name": "warmgrayButton",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "stories/icon-buttons/Azul-icon-button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "azulIconButton",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "stories/icon-buttons/Classic-icon-button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "classicIconButton",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "stories/icon-buttons/Neutral-icon-button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "neutralIconButton",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "stories/icon-buttons/Sandstone-icon-button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "sandstoneIconButton",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "stories/icon-buttons/Sunrise-icon-button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "sunriseIconButton",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "stories/icon-buttons/Warmgray-icon-button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "warmgrayIconButton",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "stories/text-icon-buttons/Azul-text-icon-button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "azulTextIconButton",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "stories/text-icon-buttons/Classic-text-icon-button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "classicTextIconButton",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "stories/text-icon-buttons/Neutral-text-icon-button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "neutralTextIconButton",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "stories/text-icon-buttons/Sandstone-text-icon-button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "sandstoneTextIconButton",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "stories/text-icon-buttons/Sunrise-text-icon-button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "sunriseTextIconButton",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "stories/text-icon-buttons/Warmgray-text-icon-button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "warmgrayTextIconButton",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"

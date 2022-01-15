@@ -4,6 +4,10 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
+      "alert-bar": [
+        "dist/alert-bar/alert-bar",
+        "dist/alert-bar"
+      ],
       "button": [
         "dist/button/button",
         "dist/button"
