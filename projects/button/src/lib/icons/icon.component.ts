@@ -9,7 +9,7 @@ import { Component, OnInit, Input, EventEmitter, Sanitizer, ChangeDetectionStrat
 })
 export class IconComponent implements OnInit {
   @Input() icon! : string;
-  @Input() size! : number;
+  @Input() size! : string;
   constructor() { }
 
   ngOnInit(): void {

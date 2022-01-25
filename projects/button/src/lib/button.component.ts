@@ -4,10 +4,10 @@ import { Component, Input, OnInit, Output, EventEmitter, ChangeDetectionStrategy
   template: `
   <button [disabled]="disabled"
   (click)="onClick.emit($event)"
-  [class] = "'btn' + ' ' + 'btn-'+buttontype + ' ' + 'icon-'+iconplacement"
+  [class] = "'btn' + ' ' + 'btn-'+buttontype + ' ' + 'icon-'+iconplacement + ' ' + 'btn-'+size"
   >
     <span *ngIf="iconname" class="o-icon">
-      <ui-icon [icon]="iconname" [size]= "iconsize"></ui-icon>
+      <ui-icon [icon]="iconname" [size]= "size"></ui-icon>
     </span>
     <span *ngIf="text">{{text}}</span>
   </button>`,
@@ -19,8 +19,8 @@ export class ButtonComponent implements OnInit {
   @Output() onClick = new EventEmitter<Event>();
   @Input() buttontype = 'neutral';
   @Input() iconname!: string;
-  @Input() iconsize!: number;
   @Input() iconplacement!: string;
+  @Input() size: string = 'sm';
   constructor() { }
   ngOnInit(): void {
   }

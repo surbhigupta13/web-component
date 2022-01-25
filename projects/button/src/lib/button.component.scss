@@ -1,13 +1,22 @@
 .btn {
-    padding: 8px;
-    min-width: 40px;
     border: 0px;
-    min-height: 24px;
-    font-size: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
     column-gap: 8px;
+    &.btn-sm{
+        min-height: 24px;
+        min-width: 40px;
+        font-size: 12px;
+        padding: 8px;
+    }
+    &.btn-large{
+        min-height: 32px;
+        min-width: 40px;
+        font-size: 16px;
+        padding: 16px;
+        line-height: 16px;
+    }
     &.icon-right{
         flex-direction: row-reverse;
     }

@@ -7,7 +7,7 @@ import { AlertBarModule, AlertBarComponent} from 'alert-bar';
   imports: [
     BrowserModule,
     ButtonModule,
-    AlertBarModule
+    AlertBarModule,
   ],
   providers: []
 })

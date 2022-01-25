@@ -29,7 +29,7 @@ To create new element we can follow this :
   ```
   - Create Script in package.json for build and pack eg:
    ```
-    "build_pack_button": "ng build && cd dist/button && npm pack",
+    "build_pack_ComponentName": "ng build && cd dist/ComponentName && npm pack",
    ```
 All elemets exits in projects folder
 ```
@@ -47,10 +47,22 @@ All elemets exits in projects folder
 │   ├──── app
 │   ├────── app.module.ts
 ```
+    -npm run build_pack:elements
 
+#### package.json
 
-# Test all the things!
-npm run build
+Your `package.json` should contain `build` npm scripts.
+
+Example:
+```
+"scripts": {
+  "build_pack_componentname": "ng build componentname && cd dist/button && npm pack
+},
+
+To publish as npm package
+```
+- go to dist/elements
+- npm publish
 
 # StoryBook!
 ```
@@ -72,23 +84,11 @@ npm start
 ## Current List of [Libraries/Frameworks]
 - [Angular](https://github.com/webcomponents/custom-elements-everywhere/tree/master/libraries/angular)
 - [How to build a lib ](https://indepth.dev/posts/1041/how-to-build-a-component-library-with-angular-and-storybook)
+- [How to create web component wrapper] (https://medium.com/swlh/angular-elements-create-a-component-library-for-angular-and-the-web-8f7986a82999)
 
 ## Testing the custom element 
 -Write component identifier in test.html
 
-
-#### package.json
-
-Your `package.json` should contain `build` npm scripts.
-
-Example:
-```
-"scripts": {
-  "build_pack_button": "ng build && cd dist/button && npm pack
-},
-
-Create new script when create a new component.
-```
 
 #### karma.conf.js
 
